@@ -44,6 +44,7 @@ botaoCadastrar.addEventListener('click', () =>{
 		var valorProduto = document.getElementById('valor-produto');
 		var quantidadeProduto = document.getElementById('quantidade-produto');
 		var codigoProduto = document.getElementById('codigo-produto');
+		var modalExcluir = document.getElementById('modal-confirmar-excluir');
 
 		var linhaTabelaProdutos = document.createElement('tr');
 		var nomeProdutoTabela = document.createElement('td');
@@ -82,6 +83,21 @@ botaoCadastrar.addEventListener('click', () =>{
 		btnExcluir.type = 'button';
 		btnExcluir.value = 'Excluir';
 		btnOperacoesTabela.className = 'btn-tabela';
+
+		btnExcluir.addEventListener('click', () =>{
+			var btnCancelar = document.getElementById('cancelar-exclusao');
+			var btnConfirmarExclusao = document.getElementById('confirmar-exclusao');
+			modalExcluir.style.display = 'flex';
+			
+			btnConfirmarExclusao.addEventListener('click', () =>{
+				linhaTabelaProdutos.style.display = 'none';
+				modalExcluir.style.display = 'none';
+			})
+			btnCancelar.addEventListener('click', () =>{
+				modalExcluir.style.display = 'none';
+			})
+		})
+
 	})
 })
 

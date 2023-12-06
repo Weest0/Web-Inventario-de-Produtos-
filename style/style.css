@@ -146,7 +146,7 @@ body{
 	color: white;
 }
 
-.btn-editar, .btn-excluir{
+.btn-editar, .btn-excluir, .btn-cancelar{
 	margin: 0 5px 0 5px;
 	color: white;
 	height: 30px;
@@ -164,7 +164,40 @@ body{
 	background-color: #E74C3C;
 }
 
+.btn-cancelar{
+	background-color: #27AE60;
+}
+
 .btn-tabela{
 	background-color: transparent !important;
 	width: 130px !important;
+}
+
+#modal-confirmar-excluir{
+	position: absolute;
+	left: 40%;
+	top: 40%;
+	width: 300px;
+	height: 80px;
+	background-color: #333;
+	border-radius: 8px;
+	padding: 20px;
+	display: none;
+	flex-direction: column;
+	color: white;
+	font-weight: bold;
+	border: 1px solid white;
+}
+
+.btn-confirmar{
+	margin: 20px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: row;
+}
+
+.btn-cancelar{
+	margin-right: 15px;
+
 }
