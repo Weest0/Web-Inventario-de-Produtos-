@@ -1,0 +1,170 @@
+/*Menu Lateral*/
+body{
+	height: 100%;
+	font-family: Arial, sans-serif;
+	margin: 0;
+	padding: 0;
+	background-color: #f2f2f2;
+}
+.menu-lateral{
+	background-color: #333;
+	height: 100%;
+	width: 200px;
+	position: fixed;
+	left: 0;
+	top: 0;
+	padding-top: 60px;
+}
+.secao-menu{
+	padding: 0;
+	margin: 0;
+	list-style: none;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+.item-menu{
+	width: 200px;
+	height: 50px;
+	border: none;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin-bottom: 10px;
+	color: white;
+	cursor: pointer;
+	background-color: #333;
+}
+
+/*Barra de titulo*/
+.barra-titulo{
+	background-color: white;
+	margin-left: 200px;
+	height: 60px;
+	display: flex;
+	align-items: center;
+}
+
+.titulo-barra{
+	font-size: 20px;
+	font-weight: bold;
+	padding: 20px 5px;
+	margin-left: 10px;
+	color: #333;
+}
+
+#btn-recolher-menu, #btn-sair-usuario{
+	border: none;
+	background-color: #333;
+	width: 70px;
+	height: 30px;
+	margin-left: 10px;
+	border-radius: 8px;
+	color: white;
+	cursor: pointer;
+}
+
+#btn-sair-usuario{
+	position: fixed;
+	right: 0;
+	margin-right: 15px;
+}
+
+/*Conteudo Cadastro*/
+
+.conteudo-cadastrar-produto, .conteudo-ver-produto{
+	margin-left: 200px;
+	padding: 20px;
+	display: flex;
+	flex-direction: column;
+}
+
+.titulo-dados-produto{
+	margin-bottom: 30px;
+	font-size: 17px;
+	font-weight: bold;
+}
+
+#codigo-produto, #nome-produto, #valor-produto, #quantidade-produto{
+	height: 30px;
+	width: 250px;
+	border-radius: 8px;
+	border: 1px solid black;
+	padding-left: 10px;
+}
+
+#nome-produto{
+	width: 850px !important;
+}
+
+#dados-produto label{
+	font-size: 14px;
+}
+
+#dados-produto{
+	display: flex;
+	flex-direction: row;
+	margin-bottom: 30px;
+}
+
+.sub-dados-produto label{
+	margin-bottom: 10px;
+	opacity: 50%;
+}
+
+.sub-dados-produto{
+	display: flex;
+	flex-direction: column;
+	margin-left: 35px;
+}
+
+#btn-salvar-produto{
+	border: none;
+	background-color: #333;
+	width: 100px;
+	height: 35px;
+	margin-left: 35px;
+	margin-top: 20px;
+	border-radius: 8px;
+	color: white;
+	cursor: pointer;
+}
+
+/*Conteudo Ver Produtos*/
+
+
+#cabecalho-tabela-produtos{
+	text-align: center;
+	color: #333;
+}
+
+#cabecalho-tabela-produtos td{
+	height: 27px;
+	border-bottom: none;
+	border-radius: 8px;
+	background-color: #333;
+	color: white;
+}
+
+.btn-editar, .btn-excluir{
+	margin: 0 5px 0 5px;
+	color: white;
+	height: 30px;
+	border: none;
+	border-radius: 8px;
+	cursor: pointer;
+	font-weight: bold;
+}
+
+.btn-editar{
+	background-color: #27AE60;
+}
+
+.btn-excluir{
+	background-color: #E74C3C;
+}
+
+.btn-tabela{
+	background-color: transparent !important;
+	width: 130px !important;
+}

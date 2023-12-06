@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Gerenciamento de Tarefas</title>
+		<style>
+			html{
+				height: 100%;
+			}
+			body{	
+				display: flex;
+				align-items: center;
+				flex-direction: column;
+				font-family: Arial,sans-serif;
+				background: linear-gradient(to left top, #000000, #3498DB);
+				background-repeat: no-repeat;
+				background-size: 100%;
+			}
+			#corpo-principal{
+				width: 100%;
+				height: 80%;
+				display: flex;
+				align-items: center;
+				flex-direction: column;
+			}
+			#tarefa::placeholder{
+				color: white;
+				opacity: 80%;
+			}
+			.elemento-lista{
+				border: 2px solid black;
+				width: 320px;
+				height: 30px;
+				border-radius: 8px;
+				padding-left: 15px;
+				display: flex;
+				align-items: center;
+				color: white;
+				background-color: black;
+			}
+			.corpo-adicionar{
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				flex-direction: row;
+				width: 500px;
+				height: 35px;
+			}
+			#tarefa{
+				margin-right: 5px;
+				color: white;
+				outline: none;
+				padding-left: 5px;
+				border: 2px solid black;
+				height: 32px;
+				width: 320px;
+				background-color: black;
+				border-radius: 8px;
+				position: relative;
+				right: 1%;
+			}
+			#adicionar{
+				color: black;
+				height: 35px;
+				width: 107px;
+				border: none;
+				background-color: #3498DB;
+				border-radius: 8px;
+				position: relative;
+				right: 1%;
+				cursor: pointer;
+			}
+			.texto-elemento{
+				color: white;
+				font-size: 15px;
+				margin-left: 5px;
+			}
+			.corpo-lista{
+				width: 450px;
+				height: 30px;
+				margin-top: 20px;
+				display: flex;
+				flex-direction: row;
+				align-items: center;
+			}
+			.botao-excluir, .botao-editar, .botao-salvar{
+				margin: 0 5px 0 5px;
+				color: black;
+				height: 35px;
+				border: none;
+				border-radius: 8px;
+				cursor: pointer;
+				font-weight: bold;
+			} 
+			.botao-excluir{
+				background-color: #E74C3C;
+			}
+			.botao-editar, .botao-salvar{
+				background-color: #27AE60;
+			}
+			.botao-excluir:hover{
+				background-color: #E74C3C;
+				opacity: 87%;
+			}
+			.botao-editar:hover, .botao-salvar:hover{
+				background-color: #27AE60;
+				opacity: 87%;
+			}
+			#adicionar:hover{
+				background-color: #3498DB;
+				opacity: 87%;
+			}
+			.campo-editar{
+				border: none;
+				background-color: transparent;
+				outline: none;
+				color: white;
+				height: 15px;
+				width: 200px;
+				border-bottom: 1px solid white;
+			}
+			#modal-aviso{
+				position: fixed;
+				bottom: 3%;
+				background-color: #E74C3C;
+				width: 100%;
+				height: 50px;
+				color: white;
+				padding-left: 30px;
+				display: none;
+				justify-content: center;
+				align-items: center;
+			}
+			#botao-fechar-modal{
+				position: relative;
+				left:38%;
+				border: none;
+				background-color: transparent;
+				cursor: pointer;
+				color: white;
+				transition: 3s;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="corpo-adicionar">
+			<input type="text" placeholder="Digite uma tarefa" id="tarefa">
+			<input type="button" value="Adicionar" id="adicionar">
+		</div>
+		<div id="corpo-principal"></div>
+		<div id="modal-aviso">
+			<span id="texto-aviso"></span>
+			<input type="button" value="X" id="botao-fechar-modal">
+		</div>
+		<script>
+			var botaoAdicionarTarefa = document.getElementById('adicionar');
+			var divCorpoPrincipal = document.getElementById('corpo-principal');
+			var texto = document.getElementById('tarefa');
+			var modalAviso = document.getElementById('modal-aviso');
+			var textoAviso = document.getElementById('texto-aviso');
+			var botaoFecharAviso = document.getElementById('botao-fechar-modal'); 
+
+			botaoFecharAviso.addEventListener('click', () =>{
+					modalAviso.style.display = 'none';
+				})
+			
+			botaoAdicionarTarefa.addEventListener('click', () =>{
+				var textoTarefa = texto.value;
+				
+				if(textoTarefa.trim() == ''){
+					textoAviso.textContent = 'O campo não pode estar vazio. '
+					modalAviso.style.display = 'flex';
+				} else {
+					var checkBoxElemento = document.createElement('input');
+					var textoElemento = document.createElement('span');
+					var elementoLista = document.createElement('span');
+					var corpoLista = document.createElement('div');
+					var botaoEditar = document.createElement('input');
+					var botaoExcluir = document.createElement('input');
+					var botaoSalvar =  document.createElement('input');
+					var campoEditar = document.createElement('input');
+					checkBoxElemento.type = 'checkbox';
+					botaoEditar.type = 'button';
+					botaoEditar.value = 'Editar';
+					botaoExcluir.type = 'button';
+					botaoExcluir.value = 'Excluir';
+					botaoSalvar.type = 'button';
+					botaoSalvar.value = 'Salvar';
+					campoEditar.type = 'text';
+					campoEditar.placeholder = 'Digite...';
+
+					corpoLista.appendChild(elementoLista);
+					corpoLista.appendChild(botaoExcluir);
+					corpoLista.appendChild(botaoEditar);
+					elementoLista.appendChild(checkBoxElemento);
+					elementoLista.appendChild(textoElemento);
+					divCorpoPrincipal.appendChild(corpoLista);
+
+					elementoLista.className = 'elemento-lista';
+					textoElemento.className = 'texto-elemento';
+					corpoLista.className = 'corpo-lista';
+					botaoEditar.className = 'botao-editar';
+					botaoExcluir.className = 'botao-excluir';
+					campoEditar.className = 'campo-editar';
+					botaoSalvar.className = 'botao-salvar';
+					checkBoxElemento.className = 'checkboxConfirmar';
+					textoElemento.textContent = textoTarefa;
+					texto.value = "";
+				}
+
+				checkBoxElemento.addEventListener('change', () =>{
+					if (checkBoxElemento.checked){
+						textoElemento.style.textDecoration = 'line-through';
+					} else {
+						textoElemento.style.textDecoration = 'none';
+					}
+				})	
+				botaoExcluir.addEventListener('click', () =>{
+					corpoLista.style.display = 'none';
+				})
+				botaoEditar.addEventListener('click', () =>{
+					textoElemento.style.display = 'none';
+					elementoLista.appendChild(campoEditar);
+					botaoEditar.style.display = 'none';
+					corpoLista.appendChild(botaoSalvar);
+					botaoSalvar.style.display = 'flex';
+					campoEditar.style.display = 'flex';
+				})
+				botaoSalvar.addEventListener('click', () =>{
+					
+
+					if(campoEditar.value.trim() == ''){
+						textoAviso.textContent = 'O campo não pode estar vazio. '
+						modalAviso.style.display = 'flex';
+					} else {
+						textoElemento.textContent = campoEditar.value;
+						campoEditar.style.display = 'none';
+						textoElemento.style.display = 'flex';
+						botaoSalvar.style.display = 'none';
+						botaoEditar.style.display = 'flex';
+					}
+				})
+			})
+		</script>
+	</body>
+</html>

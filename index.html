@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Gerenciamento de Inventario</title>
+		<link rel="stylesheet" type="text/css" href="style/style.css">
+	</head>
+	<body>
+		<div class="menu-lateral">
+			<ul class="secao-menu">
+				<li><button class="item-menu" id="btn-cadastrar">Cadastrar Produtos</button></li>
+				<li><button class="item-menu" id="btn-ver-produtos">Ver os Produtos</button></li>
+				<li><button class="item-menu" id="btn-relatorios">Relatórios</button></li>
+				<li><button class="item-menu" id="btn-configuracoes">Configurações</button></li>
+			</ul>
+		</div>
+		<div class="barra-titulo">
+			<button id="btn-recolher-menu">Menu</button>
+			<span class="titulo-barra">SISTEMA DE GERENCIAMENTO DE PRODUTOS | SGEP</span>
+			<button id="btn-sair-usuario">Sair</button>
+		</div>
+		
+		<!--Aqui e onde serão cadastrados os produtos-->
+		<div class="conteudo-cadastrar-produto" id="tela-cadastro">
+			<label for="dados-produto" class="titulo-dados-produto">Dados do Produto</label>
+			<span id="dados-produto">
+				<span class="sub-dados-produto">
+					<label for="nome-produto">Nome do produto</label>
+					<input type="text" placeholder="Arroz 5kg" id="nome-produto">
+				</span>
+			</span>
+			
+			<span id="dados-produto">
+				<span class="sub-dados-produto">
+					<label for="nome-produto">Valor</label>
+					<input type="number" placeholder="100.00" id="valor-produto">
+				</span>
+				<span class="sub-dados-produto">
+					<label for="nome-produto">Quantidade</label>
+					<input type="number" placeholder="10" id="quantidade-produto">
+				</span>
+				<span class="sub-dados-produto">
+					<label for="nome-produto">Codigo do produto</label>
+					<input type="number" placeholder="000000" id="codigo-produto">
+				</span>
+			</span>
+			<button id="btn-salvar-produto">Cadastrar</button>
+		</div>
+		
+		<!--Aqui e onde serão mostrados os produtos cadastrados-->
+		<div class="conteudo-ver-produto" id="tela-produto">
+			<label class="titulo-dados-produto">Produtos Cadastrados</label>
+			<table id="cabecalho-tabela-produtos">
+				<tr>
+					<th>NOME PRODUTO</th>
+					<th>VALOR PRODUTO</th>
+					<th>QUANTIDADE PRODUTOS</th>
+					<th>CODIGO PRODUTO</th>
+				</tr>
+			</table>
+		</div>
+		<script type="text/javascript" src="script/script.js"></script>
+		<script type="text/javascript" src="script/script-produtos.js"></script>
+	</body>
+</html>
