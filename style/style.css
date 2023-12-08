@@ -4,16 +4,17 @@ body{
 	font-family: Arial, sans-serif;
 	margin: 0;
 	padding: 0;
-	background-color: #f2f2f2;
+	background-color: white;
 }
-.menu-lateral{
-	background-color: #333;
+#menu-lateral{
+	background-color: #5585b5;
 	height: 100%;
 	width: 200px;
 	position: fixed;
 	left: 0;
 	top: 0;
 	padding-top: 60px;
+	transition: width 1s;
 }
 .secao-menu{
 	padding: 0;
@@ -28,21 +29,32 @@ body{
 	height: 50px;
 	border: none;
 	display: flex;
-	justify-content: center;
 	align-items: center;
 	margin-bottom: 10px;
 	color: white;
 	cursor: pointer;
-	background-color: #333;
+	background-color: #5585b5;
+	border-right: 2px solid #5585b5;
+	transition: width 1s;
+}
+
+.item-menu img{
+	margin-right: 15px;
+	margin-left: 15px;
+}
+
+#texto-cadastro, #texto-produtos, #texto-relatorio, #texto-config{
+	transition: opacity 0.5s, visibility 0.5s 0.6s;
 }
 
 /*Barra de titulo*/
 .barra-titulo{
-	background-color: white;
+	background-color: #38598b;
 	margin-left: 200px;
 	height: 60px;
 	display: flex;
 	align-items: center;
+	transition: margin-left 1s;
 }
 
 .titulo-barra{
@@ -50,17 +62,17 @@ body{
 	font-weight: bold;
 	padding: 20px 5px;
 	margin-left: 10px;
-	color: #333;
+	color: white;
 }
 
 #btn-recolher-menu, #btn-sair-usuario{
 	border: none;
-	background-color: #333;
+	background-color: transparent;
 	width: 70px;
 	height: 30px;
 	margin-left: 10px;
 	border-radius: 8px;
-	color: white;
+
 	cursor: pointer;
 }
 
@@ -77,6 +89,7 @@ body{
 	padding: 20px;
 	display: flex;
 	flex-direction: column;
+	transition: margin-left 1s;
 }
 
 .titulo-dados-produto{
@@ -85,7 +98,7 @@ body{
 	font-weight: bold;
 }
 
-#codigo-produto, #nome-produto, #valor-produto, #quantidade-produto{
+#codigo-produto, #valor-produto, #nome-produto, #quantidade-produto, #descricao-produto{
 	height: 30px;
 	width: 250px;
 	border-radius: 8px;
@@ -96,6 +109,24 @@ body{
 #nome-produto{
 	width: 850px !important;
 }
+
+#descricao-produto{
+	height: 30px;
+	width: 550px;
+	border-radius: 8px;
+	border: 1px solid black;
+	padding-left: 10px;
+}
+
+#categoria-produto{
+	height: 34px;
+	width: 265px;
+	border-radius: 8px;
+	border: 1px solid black;
+	padding-left: 10px;
+}
+
+
 
 #dados-produto label{
 	font-size: 14px;
@@ -118,9 +149,9 @@ body{
 	margin-left: 35px;
 }
 
-#btn-salvar-produto{
+#btn-salvar-produto, #btn-redefinir-produto{
 	border: none;
-	background-color: #333;
+	background-color: #5585b5;
 	width: 100px;
 	height: 35px;
 	margin-left: 35px;
@@ -132,23 +163,22 @@ body{
 
 /*Conteudo Ver Produtos*/
 
-
 #cabecalho-tabela-produtos{
 	text-align: center;
-	color: #333;
+	color: black;
 }
 
 #cabecalho-tabela-produtos td{
 	height: 27px;
 	border-bottom: none;
 	border-radius: 8px;
-	background-color: #333;
+	background-color: #5585b5;
 	color: white;
 }
 
-.btn-editar, .btn-excluir, .btn-cancelar{
-	margin: 0 5px 0 5px;
+.btn-editar, .btn-excluir, .btn-cancelar-modal, .btn-excluir-modal{
 	color: white;
+	margin: 0 5px 0 5px;
 	height: 30px;
 	border: none;
 	border-radius: 8px;
@@ -158,19 +188,47 @@ body{
 
 .btn-editar{
 	background-color: #27AE60;
+	background-image: url('../images/editar-branco.png');
+	background-size: 16px 16px;
+	background-repeat: no-repeat;
+	background-position: center;
+	width: 24px !important;
 }
 
 .btn-excluir{
 	background-color: #E74C3C;
+	background-image: url('../images/lixeira-branca.png');
+	background-size: 16px 16px;
+	background-repeat: no-repeat;
+	background-position: center;
+	width: 24px !important;
 }
 
-.btn-cancelar{
+.btn-excluir-modal{
+	background-color: #E74C3C;
+	background-image: url('../images/lixeira-branca.png');
+	background-size: 16px 16px;
+	background-repeat: no-repeat;
+	background-position: 95%;
+	width: 72px !important;
+	text-align: left;
+}
+
+.btn-cancelar-modal{
 	background-color: #27AE60;
+	background-image: url('../images/cancelar-branco.png');
+	background-size: 16px 16px;
+	background-repeat: no-repeat;
+	background-position: 95%;
+	width: 85px !important;
+	text-align: left;
 }
 
 .btn-tabela{
+	margin-left: 15px;
 	background-color: transparent !important;
-	width: 130px !important;
+	width: 70px !important;
+	display: none;
 }
 
 #modal-confirmar-excluir{
@@ -179,7 +237,7 @@ body{
 	top: 40%;
 	width: 300px;
 	height: 80px;
-	background-color: #333;
+	background-color: #38598b;
 	border-radius: 8px;
 	padding: 20px;
 	display: none;
@@ -200,4 +258,46 @@ body{
 .btn-cancelar{
 	margin-right: 15px;
 
+}
+
+#btn-abrir-editar{
+	margin-left: 5px;
+	display: flex;
+	flex-direction: row;
+	background-color: transparent;
+	border: none;
+	width: 20px;
+	height: 20px;
+	cursor: pointer;
+}
+
+.titulo-produtos{
+	margin-bottom: 30px;
+	display: flex;
+	flex-direction: row;
+}
+
+
+/*Modal de aviso*/
+#modal-aviso{
+	position: fixed;
+	bottom: 3%;
+	background-color: #E74C3C;
+	width: 100%;
+	height: 50px;
+	color: white;
+	padding-left: 30px;
+	display: none;
+	justify-content: center;
+	align-items: center;
+	transition: display 1s;
+}
+
+#botao-fechar-modal{
+	position: relative;
+	left:38%;
+	border: none;
+	background-color: transparent;
+	cursor: pointer;
+	color: white;
 }

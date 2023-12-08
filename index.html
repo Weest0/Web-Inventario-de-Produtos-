@@ -1,22 +1,42 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<title>Gerenciamento de Inventario</title>
+		<title>Gerenciamento de Estoque de Artesanato</title>
 		<link rel="stylesheet" type="text/css" href="style/style.css">
 	</head>
 	<body>
-		<div class="menu-lateral">
+		<div id="menu-lateral">
 			<ul class="secao-menu">
-				<li><button class="item-menu" id="btn-cadastrar">Cadastrar Produtos</button></li>
-				<li><button class="item-menu" id="btn-ver-produtos">Ver os Produtos</button></li>
-				<li><button class="item-menu" id="btn-relatorios">Relatórios</button></li>
-				<li><button class="item-menu" id="btn-configuracoes">Configurações</button></li>
+				<li>
+					<button class="item-menu" id="btn-cadastrar">
+						<img id="img-caixa" src="./images/caixa-branca.png">
+						<label id="texto-cadastro">Cadastrar Produtos</label>
+					</button>
+				</li>
+				<li>
+					<button class="item-menu" id="btn-ver-produtos">
+						<img id="img-prancheta" src="./images/prancheta-branca.png">
+						<label id="texto-produtos">Ver os Produtos</label>
+					</button>
+				</li>
+				<li>
+					<button class="item-menu" id="btn-relatorios">
+						<img id="img-relatorio" src="./images/grafico-branco.png">
+						<label id="texto-relatorio">Relatórios</label>
+					</button>
+				</li>
+				<li>
+					<button class="item-menu" id="btn-configuracoes">
+						<img id="img-config" src="./images/config-branca.png">
+						<label id="texto-config">Configurações</label>  
+					</button>
+				</li>
 			</ul>
 		</div>
-		<div class="barra-titulo">
-			<button id="btn-recolher-menu">Menu</button>
-			<span class="titulo-barra">SISTEMA DE GERENCIAMENTO DE PRODUTOS | SGEP</span>
-			<button id="btn-sair-usuario">Sair</button>
+		<div class="barra-titulo" id="barra-titulo">
+			<button id="btn-recolher-menu"><img src="./images/menu-azul.png"></button>
+			<span class="titulo-barra">SISTEMA DE ESTOQUE DE ARTESANATO | SEAT</span>
+			<button id="btn-sair-usuario"><img src="./images/sair-azul.png"></button>
 		</div>
 		
 		<!--Aqui e onde serão cadastrados os produtos-->
@@ -25,7 +45,7 @@
 			<span id="dados-produto">
 				<span class="sub-dados-produto">
 					<label for="nome-produto">Nome do produto</label>
-					<input type="text" placeholder="Arroz 5kg" id="nome-produto">
+					<input type="text" placeholder="Jarro" id="nome-produto">
 				</span>
 			</span>
 			
@@ -43,18 +63,47 @@
 					<input type="number" placeholder="000000" id="codigo-produto">
 				</span>
 			</span>
-			<button id="btn-salvar-produto">Cadastrar</button>
+
+			<span id="dados-produto">
+				<span class="sub-dados-produto">
+					<label for="categoria-produto">Categoria</label>
+					<select id="categoria-produto">
+						<option>Esculturas de Argila</option>
+						<option>Ajulejos e Mosaicos</option>
+						<option>Bonecos e Figuras</option>
+						<option>Vazos e Jarros</option>
+						<option>Objetos Decorativos</option>
+						<option>Outro</option>
+					</select>
+				</span>
+				<span class="sub-dados-produto">
+					<label for="descricao-produto">Descrição do Produto</label>
+					<input type="text" placeholder="40cm, Barro" id="descricao-produto">
+				</span>
+			</span>
+			
+			<span>
+				<button id="btn-salvar-produto">Cadastrar</button>
+				<button id="btn-redefinir-produto">Redefinir</button>
+			</span>
+			
 		</div>
 		
 		<!--Aqui e onde serão mostrados os produtos cadastrados-->
 		<div class="conteudo-ver-produto" id="tela-produto">
-			<label class="titulo-dados-produto">Produtos Cadastrados</label>
+			<span class="titulo-produtos">
+				<label class="titulo-dados-produto">Produtos Cadastrados</label>
+				<button id="btn-abrir-editar"><img src="./images/editar-preto.png"></button>
+			</span>
+			
 			<table id="cabecalho-tabela-produtos">
 				<tr>
 					<th>NOME PRODUTO</th>
 					<th>VALOR PRODUTO</th>
 					<th>QUANTIDADE PRODUTOS</th>
 					<th>CODIGO PRODUTO</th>
+					<th>CATEGORIA PRODUTO</th>
+					<th>DESCRIÇÃO PRODUTO</th>
 				</tr>
 			</table>
 		</div>
@@ -63,11 +112,17 @@
 		<div id="modal-confirmar-excluir">
 			<label>Realmente deseja apagar?</label>
 			<div class="btn-confirmar">
-				<button class="btn-cancelar" id="cancelar-exclusao">Cancelar</button>
-				<button class="btn-excluir" id="confirmar-exclusao">Excluir</button>
+				<button class="btn-cancelar-modal" id="cancelar-exclusao">Cancelar</button>
+				<button class="btn-excluir-modal" id="confirmar-exclusao">Apagar</button>
 			</div>
-			
 		</div>
+
+		<!--Modal de erro ou confirmação-->
+		<div id="modal-aviso">
+			<span id="texto-aviso"></span>
+			<input type="button" value="X" id="botao-fechar-modal">
+		</div>
+
 		<script type="text/javascript" src="script/script.js"></script>
 		<script type="text/javascript" src="script/script-produtos.js"></script>
 	</body>
